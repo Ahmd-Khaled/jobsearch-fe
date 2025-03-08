@@ -64,7 +64,7 @@ const useLogin = () => {
         if (responseFromApi.tokens) {
           Cookies.set("token", responseFromApi.tokens.access_token);
 
-          // redirect("/sick-leave-request");
+          // redirect("/messaging");
           setTimeout(() => {
             router.push("/messaging");
           }, 2000);

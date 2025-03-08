@@ -4,21 +4,29 @@ import GoogleBtn from "../utils/GoogleBtn/GoogleBtn";
 import InputRHF from "../utils/InputRHF/InputRHF";
 import styles from "./styles.module.scss";
 import Alert from "../utils/Alert/Alert";
+import useGoogleLogin from "@/hooks/auth/useGoogleLogin";
+import { GoogleLogin } from "@react-oauth/google";
 
 const Login = () => {
   const [register, control, onSubmit, handleSubmit, errors, message, status] =
     useLogin();
-
+  const [handleGoogleLogin, googleMsg, googleStatus] = useGoogleLogin();
   return (
     <section className={styles.login}>
-      {message && (
+      {status && (
         <Alert message={message} type={status ? "success" : "error"} />
+      )}
+      {googleMsg && (
+        <Alert message={googleMsg} type={googleStatus ? "success" : "error"} />
       )}
       <div className={styles.container}>
         <div className={styles.content}>
           <h2 className={styles.title}>Sign In</h2>
           <div className={styles.gBtn}>
-            <GoogleBtn />
+            <GoogleLogin
+              onSuccess={handleGoogleLogin}
+              onError={() => console.log("Login Failed")}
+            />
           </div>
           <div className={styles.or}>
             <span />
