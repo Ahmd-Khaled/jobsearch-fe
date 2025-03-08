@@ -4,11 +4,14 @@
     align-items: center;
     justify-content: center;
     .content {
-      width: 352px;
+      width: 400px;
       //   height: 536px;
       @include borderRadius(8px);
       padding: 24px 24px 36px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      @media (max-width: $sm-media) {
+        width: 90%;
+      }
       @media (max-width: $xs-media) {
         width: 100%;
         box-shadow: none;
@@ -47,6 +50,7 @@
         margin-top: 16px;
         // overflow: hidden;
         .loginBtn {
+          margin-top: 16px;
           cursor: pointer;
           background-color: $primary;
           color: $white;
@@ -54,7 +58,7 @@
           height: 52px;
           text-align: center;
           border: 1px solid $primary;
-          @include borderRadius(52px);
+          @include borderRadius(8px);
           font-size: 18px;
           opacity: 1;
           @include transition(0.3s);

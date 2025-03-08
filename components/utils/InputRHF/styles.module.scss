@@ -1,8 +1,7 @@
 .authInput {
   flex: 1;
-  width: 90%;
+  width: 98%;
   @media (max-width: $lg-media) {
-    width: 90%;
   }
   label {
     font-family: var(--font-inter);
