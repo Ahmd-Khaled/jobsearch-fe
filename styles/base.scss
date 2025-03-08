@@ -1,4 +1,6 @@
 $primary: #0a66c2;
+$gray-bg: #f4f2ee;
+$gray-border: rgba(140, 140, 140, 0.2);
 $secondary: #5f6c37;
 
 $black-10: #101010;
@@ -7,6 +9,7 @@ $black-19: #191919;
 $black-1E: #1e1e1e;
 $black-1A: #1a1d1f;
 $black-36: #363636;
+$black-5F: #5f6c37;
 $gray-66: #666666;
 $gray-76: #767681;
 $gray-89: #898989;
@@ -263,7 +266,7 @@ $md-media: 768px;
 $lg-media: 992px;
 $xl-media: 1200px;
 $xxl-media: 1400px;
-$xxxl-media: 1600px;
+$xxxl-media: 1500px;
 // --------------------------Fonts----------------------
 $Roboto-font: "Roboto", sans-serif;
 $Cairo-font: "Cairo", sans-serif;
@@ -280,6 +283,27 @@ $Poppins-font: "Poppins", sans-serif;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
+}
+@mixin circleImg($dimension) {
+  width: $dimension;
+  height: $dimension;
+  min-width: $dimension;
+  max-width: $dimension;
+  min-height: $dimension;
+  max-height: $dimension;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+@mixin opacityTransition {
+  opacity: 1;
+  @include transition(0.3s);
+  &:hover {
+    opacity: 0.7;
+  }
 }
 
 @mixin borderRadius($dim) {

@@ -1,7 +1,7 @@
-import React from "react";
+import Messaging from "@/components/Messaging/Messaging";
 
 const MessagingPage = () => {
-  return <div className="">MessagingPage</div>;
+  return <Messaging />;
 };
 
 export default MessagingPage;

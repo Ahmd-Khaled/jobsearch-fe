@@ -9,7 +9,6 @@ import Cookies from "js-cookie";
 import { usePathname, useRouter } from "next/navigation";
 
 const useLogin = () => {
-  const locale = "en";
   const router = useRouter();
   const pathname = usePathname();
 
@@ -46,7 +45,7 @@ const useLogin = () => {
 
     // console.log("Form submission data:", formData);
 
-    const response = await sendData(`${baseUrl}/auth/signin`, formData, locale);
+    const response = await sendData(`${baseUrl}/auth/signin`, formData);
     setResponseFromApi(response);
     console.log(response);
   };
@@ -59,7 +58,9 @@ const useLogin = () => {
           setMessage(responseFromApi.message);
         }
         if (responseFromApi.user) {
-          Cookies.set("userData", responseFromApi.user);
+          // Cookies.set("userData", responseFromApi.user);
+          Cookies.set("userId", responseFromApi.user._id);
+          Cookies.set("role", responseFromApi.user.role);
         }
         if (responseFromApi.tokens) {
           Cookies.set("token", responseFromApi.tokens.access_token);

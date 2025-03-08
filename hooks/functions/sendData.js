@@ -1,12 +1,16 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-export const sendData = async (url, data, locale) => {
-  let userToken;
-  if (typeof window !== "undefined") {
-    userToken = Cookies.get("token") || localStorage.getItem("token") || "";
-  }
-  // e.preventDefault();
+let token;
+let userId;
+let role;
+if (typeof window !== "undefined") {
+  token = Cookies.get("token") || "";
+  userId = Cookies.get("userId") || "";
+  role = Cookies.get("role") || "";
+}
+
+export const sendData = async (url, data) => {
   let res;
   try {
     res = await fetch(url, {
@@ -15,19 +19,11 @@ export const sendData = async (url, data, locale) => {
       headers: {
         Accept: "*/*",
         "Content-Type": "application/json",
-        "Access-Control-Allow-Headers": "Content-Type",
         "Access-Control-Allow-Origin": "*",
-        allow_headers: [
-          "Content-Type",
-          "Authorization",
-          "language",
-          "apiPassword",
-        ],
+        allow_headers: ["Content-Type", "Authorization", "language"],
         "Accept-Language": "*",
-        "x-api-key": "yum_gutt_1666",
-        "X-country-id": "dc",
-        lang: locale || "en",
-        Authorization: `Bearer ${userToken}`,
+        lang: "en",
+        Authorization: `${role} ${token}`,
       },
     });
     console.log(res);

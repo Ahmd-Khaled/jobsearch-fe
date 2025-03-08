@@ -1,28 +1,24 @@
 import Cookies from "js-cookie";
 
-export const getData = async (url, type, locale) => {
-  let userToken;
-  if (typeof window !== "undefined") {
-    userToken = Cookies.get("token") || localStorage.getItem("token") || "";
-  }
+let token;
+let userId;
+let role;
+if (typeof window !== "undefined") {
+  token = Cookies.get("token") || "";
+  userId = Cookies.get("userId") || "";
+  role = Cookies.get("role") || "";
+}
 
+export const getData = async (url, type) => {
   const res = await fetch(url, {
     headers: {
       Accept: "*/*",
       "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "*",
-      allow_headers: [
-        "Content-Type",
-        "Authorization",
-        "language",
-        "apiPassword",
-      ],
+      allow_headers: ["Content-Type", "Authorization", "language"],
       "Accept-Language": "*",
-      apiPassword: "123456",
-      lang: locale || "ar",
-      Authorization: `Bearer ${userToken}`,
-      "x-api-key": "yum_gutt_1666",
-      "X-country-id": "dc",
+      lang: "en",
+      Authorization: `${role} ${token}`,
     },
     type,
   });
@@ -44,18 +40,10 @@ export const getDataWithToken = async (url, type, locale, userToken) => {
       Accept: "*/*",
       "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "*",
-      allow_headers: [
-        "Content-Type",
-        "Authorization",
-        "Accept-Language",
-        "x-api-key",
-        "X-country-id",
-      ],
-      "Accept-Language": locale || "en",
-      "x-api-key": "yum_gutt_1666",
-      "X-country-id": "dc",
-      Authorization: `Bearer ${userToken}`,
-      // Authorization: `Bearer ${Cookies.get("token")}`,
+      allow_headers: ["Content-Type", "Authorization", "language"],
+      "Accept-Language": "*",
+      lang: "en",
+      Authorization: `${role} ${token}`,
     },
     type,
   });

@@ -16,7 +16,7 @@
 }
 
 body {
-  font-family: var(--font-poppins);
+  font-family: var(--font-roboto);
   &::-webkit-scrollbar {
     width: 6px;
   }
@@ -33,8 +33,12 @@ body {
 }
 
 .mainContainer {
-  padding-inline-start: 61px;
-  padding-inline-end: 61px;
+  padding-inline-start: 200px;
+  padding-inline-end: 200px;
+  @media (max-width: $xxxl-media) {
+    padding-inline-start: 61px;
+    padding-inline-end: 61px;
+  }
   @media (max-width: $xxl-media) {
     padding-inline-start: 42px;
     padding-inline-end: 42px;
@@ -115,4 +119,9 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 1000px white inset !important; /* Force background color */
   box-shadow: 0 0 0 1000px white inset !important; /* Standard box shadow */
   transition: background-color 5000s ease-in-out 0s !important; /* Prevent color fade */
+}
+
+.bg {
+  background-color: $gray-bg;
+  min-height: 100vh;
 }

@@ -17,6 +17,7 @@ import {
 } from "next/font/google";
 import "./globals.scss";
 import localFont from "next/font/local";
+import AutoRefreshTokens from "@/components/utils/AutoRefreshTokens/AutoRefreshTokens";
 
 const agdasima = Agdasima({
   subsets: ["latin"],
@@ -132,7 +133,10 @@ export default async function RootLayout({ children }) {
       <body
         className={`${actor.variable} ${lato.variable} ${agdasima.variable} ${poppins.variable}${work_Sans.variable} ${inter.variable} ${be_Vietnam_Pro.variable} ${space_Grotesk.variable} ${montserrat.variable} ${playfair.variable} ${roboto.variable} ${roboto_Serif.variable} ${plus_Jakarta_Sans.variable} ${bona_Nova_SC.variable}  ${poppins.variable} ${notoKufiArabic.variable} antialiased`}
       >
-        <main suppressHydrationWarning={true}>{children}</main>
+        <main suppressHydrationWarning={true}>
+          <AutoRefreshTokens /> {/* Runs API every 30 minutes */}
+          {children}
+        </main>
       </body>
     </html>
   );

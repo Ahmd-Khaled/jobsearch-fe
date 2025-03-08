@@ -10,7 +10,9 @@ import { GoogleLogin } from "@react-oauth/google";
 const Login = () => {
   const [register, control, onSubmit, handleSubmit, errors, message, status] =
     useLogin();
+
   const [handleGoogleLogin, googleMsg, googleStatus] = useGoogleLogin();
+
   return (
     <section className={styles.login}>
       {status && (
