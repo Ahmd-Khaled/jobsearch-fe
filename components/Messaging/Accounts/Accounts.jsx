@@ -5,7 +5,7 @@ import styles from "./styles.module.scss";
 
 const Accounts = ({ handleSelectedUser, selectedUser, myId }) => {
   const [allUsers, loading] = useGetAllUsers();
-  console.log("---- allUsers:", allUsers);
+  // console.log("---- allUsers:", allUsers);
   return (
     <div className={styles.accounts}>
       {allUsers?.map((user, index) => (

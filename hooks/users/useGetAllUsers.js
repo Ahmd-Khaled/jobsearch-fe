@@ -18,7 +18,7 @@ const useGetAllUsers = () => {
         // next: { revalidate: 3600 },
         // cache: 'no-store',
       });
-      console.log("--------response:", response);
+      // console.log("--------response:", response);
 
       if (response) {
         setLoading(false);

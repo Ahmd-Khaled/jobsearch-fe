@@ -8,7 +8,7 @@ import { baseUrl } from "../functions/baseUrl";
 const useGetUserChatHistory = (userId) => {
   const router = useRouter();
 
-  console.log("....................... userId:", userId);
+  // console.log("....................... userId:", userId);
 
   const [loading, setLoading] = useState(false);
   const [chatHistory, setChatHistory] = useState([]);
